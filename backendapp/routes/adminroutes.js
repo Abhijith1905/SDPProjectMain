@@ -5,7 +5,8 @@ const adminrouter = express.Router()
 
 // admin routes
 adminrouter.post("/checkadminlogin",admincontroller.checkadminlogin)
-adminrouter.post("/resetpassword",admincontroller.resetpassword)
+adminrouter.post("/checkusername",admincontroller.checkusername)
+adminrouter.post("/resetadminpassword",admincontroller.resetadminpassword)
 adminrouter.post("/insertstudent",admincontroller.insertstudent)
 adminrouter.post("/insertfaculty",admincontroller.insertfaculty)
 adminrouter.post("/createcourse",admincontroller.createcourse)

@@ -14,13 +14,29 @@ export default function AdminHome() {
 
 
         <ul className='navbar'>
+        <li>
+            <Link to="/adminhome">Home</Link>
+        </li> 
+        <li>
+            <Link to="/adminprofile">Profile</Link>
             
-        <li>
-            <Link to="/attendance">Attendance</Link>
         </li>
         <li>
-            <Link to="/timetable">Timetable</Link>
+            <Link to="/registerstudent">Register Students</Link>
         </li>
+        <li>
+            <Link to="/registerfaculty">Register Faculty</Link>
+        </li>
+        <li>
+            <Link to="/viewstudent">View Students</Link>
+        </li>
+        <li>
+            <Link to="/viewfaculty">View Faculty</Link>
+        </li>
+        <li>
+            <Link to="/alterattendance">Attendance</Link>
+        </li>
+       
         <li>
             <Link to="/createcourse">Create Courses</Link>
         </li>
@@ -28,27 +44,10 @@ export default function AdminHome() {
             <Link to="/viewcourse">View Course</Link>
         </li>
         
-        <li>
-            <Link to="/registerstudent">Register Students</Link>
-        </li>
-        <li>
-            <Link to="/viewstudent">View Students</Link>
-        </li>
-        <li>
-            <Link to="/registerfaculty">Register Faculty</Link>
-        </li>
-        <li>
-            <Link to="/viewfaculty">View Faculty</Link>
-        </li>
-        <li>
-            <Link to='/viewfacultycoursemap'>View Faculty-Course Mapping</Link>
-        </li>
+       
 
-        <br />
-        <br />
-        <br />
-     
-        <br />
+
+       
         
         <li>
             <Link to="/settings">Settings</Link>

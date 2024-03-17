@@ -60,7 +60,7 @@ export default function ViewCourse() {
     ))
   ) : (
     <tr>
-      <td colSpan="7">Data Not Found</td>
+      <td colSpan="6">Data Not Found</td>
     </tr>
   )}
 </tbody>

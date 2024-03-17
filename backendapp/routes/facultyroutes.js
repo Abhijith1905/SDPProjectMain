@@ -5,9 +5,8 @@ const facultyrouter = express.Router()
 
 
 facultyrouter.post("/checkfacultylogin",facultycontroller.checkfacultylogin)
-
-
-facultyrouter.post("/markattendance",facultycontroller.markattendance)
+facultyrouter.post("/checkemail",facultycontroller.checkemail)
+facultyrouter.post("/resetfacultypassword",facultycontroller.resetfacultypassword)
 
 
 module.exports = facultyrouter

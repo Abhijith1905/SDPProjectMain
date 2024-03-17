@@ -10,20 +10,18 @@ export default function StudentHome() {
       
 
         <ul className='navbar'>
-            
-<br />
-<br /><br /><br />
+
         <li>
-            <Link to="/home">Home</Link>
+            <Link to="/studenthome">Home</Link>
         </li>
         <li>
             <Link to="/studentprofile">Profile</Link>
         </li>
         <li>
-            <Link to="/attendance">Attendance</Link>
+            <Link to="/sviewattendance">Attendance</Link>
         </li>
         <li>
-            <Link to="/timetable">Timetable</Link>
+            <Link to="/sviewtimetable">Timetable</Link>
         </li>
         <li>
             <Link to="/viewcourses">Courses</Link>
@@ -34,9 +32,7 @@ export default function StudentHome() {
         <li>
             <Link to="/feedback">Feedback</Link>
         </li>
-        <br />
-        <br />
-        <br />
+      
      
         <br />
         <br />
@@ -45,7 +41,7 @@ export default function StudentHome() {
        
         <br />
         <li>
-            <Link to="/contact">Settings</Link>
+            <Link to="/Settings">Settings</Link>
         </li>
         <li>
             <Link to="/login">Logout</Link>

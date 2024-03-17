@@ -1,5 +1,4 @@
 const Faculty = require("../models/Faculty")
-const Attendance = require("../models/Attendance")
 const Student = require("../models/Student")
 
   const checkfacultylogin = async (request, response) => 
@@ -16,31 +15,40 @@ const Student = require("../models/Student")
      }
    };
 
-   
-
-
-   const markattendance = async (req, res) => {
+   const checkemail = async (request, response) => {
+    const { email } = request.body;
     try {
-      const { attendanceData } = req.body;
-  
-      await Promise.all(attendanceData.map(async ({ studentid, isPresent }) => {
-        await Attendance.findOneAndUpdate(
-          { studentid, date: new Date() },
-          { $set: { isPresent } },
-          { upsert: true, new: true }
-        );
-      }));
-  
-      res.status(200).json({ message: 'Attendance marked successfully' });
+      const user = await Faculty.findOne({ email });
+      if (user) {
+        response.send(true);
+      } else {
+        response.send(false);
+      }
     } catch (error) {
-      console.error(error.message);
-      res.status(500).json({ error: 'Internal Server Error' });
+      response.status(500).send(error.message);
     }
   };
+
+  const resetfacultypassword = async (request, response) => {
+    const { email, newPassword } = request.body;
+    try {
+      const user = await Faculty.findOne({ email });
+      if (user) {
+        user.password = newPassword;
+        await user.save();
+        response.send('Password reset successfully');
+      } else {
+        response.send('email not found');
+      }
+    } catch (error) {
+      response.status(500).send(error.message);
+    }
+  };
+   
   
    
    
 
   
 
-  module.exports = {checkfacultylogin,markattendance}
+  module.exports = {checkfacultylogin,checkemail,resetfacultypassword}

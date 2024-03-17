@@ -1,9 +1,11 @@
 import React from 'react'
-import profile from './stu.jpg'
+
 export default function StudentProfile() {
   return (
     <div>
-        <img src={profile} alt='profile'/>
+        <h3>
+          Student Profile
+</h3>
     </div>
   )
 }

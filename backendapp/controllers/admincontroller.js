@@ -119,7 +119,7 @@ const Courses = require("../models/Courses")
       const input =  request.body;
       const course = new Courses(input);
       await course.save();
-      response.send('Registered Successfully');
+      response.send('Created Successfully');
     } 
     catch(e) 
     {
@@ -194,28 +194,36 @@ const Courses = require("../models/Courses")
   };
 
 
-  const resetpassword = async (request, response) => {
-    try 
-    {
-      const { username, currentPassword, newPassword } = request.body;
-      const user = await Admin.findOne(username)
-      if (!user) {
-        return response.send('User not found');
+  
+
+  const checkusername = async (request, response) => {
+    const { username } = request.body;
+    try {
+      const user = await Admin.findOne({ username });
+      if (user) {
+        response.send(true);
+      } else {
+        response.send(false);
       }
-      else if (user.password !== currentPassword) {
-        return response.send('Invalid current password');
-      }
-      else
-      {
-        user.password = newPassword;
-        await user.save();
-        response.send('Password updated successfully');
-      }
-    } 
-    catch(e) 
-    {
-      response.status(500).send(e.message);
+    } catch (error) {
+      response.status(500).send(error.message);
     }
   };
 
-  module.exports = {checkadminlogin,viewstudents,viewfaculty,viewcourse,insertstudent,insertfaculty,createcourse,deletestudent,deletefaculty,deletecourse,resetpassword}
+  const resetadminpassword = async (request, response) => {
+    const { username, newPassword } = request.body;
+    try {
+      const user = await Admin.findOne({ username });
+      if (user) {
+        user.password = newPassword;
+        await user.save();
+        response.send('Password reset successfully');
+      } else {
+        response.send('Username not found');
+      }
+    } catch (error) {
+      response.status(500).send(error.message);
+    }
+  };
+
+  module.exports = {checkadminlogin,viewstudents,viewfaculty,viewcourse,insertstudent,insertfaculty,createcourse,deletestudent,deletefaculty,deletecourse,resetadminpassword,checkusername}

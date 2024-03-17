@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 //import profile from './logo.svg'
 import './facultynavbar.css'
-import TakeAttendance from './TakeAttendance';
+
 
 
 export default function FacultyHome() {
@@ -12,45 +12,38 @@ export default function FacultyHome() {
 
 
         <ul className='navbar'>
-            
-<br />
-<br /><br /><br />
-<Routes>
-<Route path='/markattendance' Component={TakeAttendance} exact/>  
-</Routes>   
+
         <li>
-            <Link to="/home">Home</Link>
+            <Link to="/facultyhome">Home</Link>
         </li>
         <li>
-            <Link to="/about">Profile</Link>
+            <Link to="/facultyprofile">Profile</Link>
         </li>
         <li>
             <Link to="/markattendance">Attendance</Link>
         </li>
         <li>
-            <Link to="/Timetable">Timetable</Link>
+            <Link to="/fviewtimetable">Timetable</Link>
         </li>
         <li>
             <Link to="/viewcoursef">Courses</Link>
         </li>
         <li>
-            <Link to="/Exam Section">Results</Link>
+            <Link to="/graderesults">Grading</Link>
         </li>
         <li>
-            <Link to="/Exam Section">Feedback</Link>
+            <Link to="/viewfeedback">Feedback</Link>
         </li>
         <br />
-        <br />
-        <br />
+        
      
-        <br />
         <br />
       
         <br />
        
         <br />
         <li>
-            <Link to="/contact">Settings</Link>
+            <Link to="/Settings">Settings</Link>
         </li>
         <li>
             <Link to="/login">Logout</Link>

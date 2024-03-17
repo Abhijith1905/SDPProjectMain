@@ -63,7 +63,7 @@ export default function ViewFaculty() {
     ))
   ) : (
     <tr>
-      <td colSpan="7">Data Not Found</td>
+      <td colSpan="9">Data Not Found</td>
     </tr>
   )}
 </tbody>

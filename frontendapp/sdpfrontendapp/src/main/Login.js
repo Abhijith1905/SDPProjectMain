@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Profiler } from 'react';
 import "./login.css";
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import PasswordReset from './PasswordReset';
+
 import axios from "axios";
+
 
 
 export default function Login() {
@@ -63,10 +64,10 @@ export default function Login() {
     e.preventDefault();
     try 
     {
-      const response = await axios.post('http://localhost:2032/checkadminlogin', adminformData);
+      const response = await axios.post('http://localhost:2000/checkadminlogin', adminformData);
       if (response.data!=null) 
       {
-        navigate1("/adminhome")
+        navigate1("/adminhome");
       } 
       else 
       {
@@ -82,7 +83,7 @@ export default function Login() {
   };
 
   const [studentformData, setStudentFormData] = useState({
-      email: '',
+      studentid: '',
       password: ''
     });
     const [message2,setMessage2] = useState("")
@@ -99,7 +100,7 @@ export default function Login() {
       e.preventDefault();
       try 
       {
-        const response = await axios.post('http://localhost:2032/checkstudentlogin', studentformData);
+        const response = await axios.post('http://localhost:2000/checkstudentlogin', studentformData);
         if (response.data!=null) 
         {
           navigate2("/studenthome")
@@ -135,7 +136,7 @@ export default function Login() {
       e.preventDefault();
       try 
       {
-        const response = await axios.post('http://localhost:2032/checkfacultylogin', facultyformData);
+        const response = await axios.post('http://localhost:2000/checkfacultylogin', facultyformData);
         if (response.data!=null) 
         {
           navigate3("/facultyhome")
@@ -155,10 +156,7 @@ export default function Login() {
 
   return (
     <div>
-      <Routes>
-        <Route path='/resetpassword' Component={PasswordReset}></Route>
-        
-      </Routes>
+     
 
       <div className="desktop-content">
       <div className={`SuperContainer ${containerClasses}`} id="SuperContainer">
@@ -173,7 +171,7 @@ export default function Login() {
               <pre>
   <input type="checkbox" onClick={handleShowPassword1} /> Show Password
 </pre>
-<Link to="/resetpassword">Forgot password?</Link>
+<Link to="/adminresetpasswordstart">Reset your password</Link>
               <input type="submit" value="login"/>
             </form>
         </div>
@@ -183,13 +181,13 @@ export default function Login() {
         message2 ? <h4 align="center">{message2}</h4> : <h4 align="center">{error2}</h4>
       }
                 <h1>Student</h1>
-				<input id='inp2A' name="email" type="text" placeholder="Email" onChange={handleChange2} required/>
+				<input id='inp2A' name="studentid" type="text" placeholder="studentid" onChange={handleChange2} required/>
           		<input id='inp2B' name="password" type={showPassword2 ? 'text' : 'password'}  placeholder="Password" onChange={handleChange2} required />
               <pre>
   <input type="checkbox" onClick={handleShowPassword2} /> Show Password
   
 </pre>
-<Link to="/resetpassword">Forgot password?</Link>
+<Link to="/studentresetpasswordstart">Reset your password</Link>
                   <input type="submit" value="login"/>
             </form>
         </div>
@@ -205,15 +203,11 @@ export default function Login() {
   <input type="checkbox" onClick={handleShowPassword3} /> Show Password
 
 </pre>
-<Link to="/resetpassword">Forgot password?</Link>
+<Link to="/facultyresetpasswordstart">Reset your password</Link>
                   <input type="submit" value="login"/>
             </form>
         </div>
-         {/* <div className="Overlay3" id="Overlay3">
-            <h1 id="mainhead">ACADEMEX</h1>
-             <button id="login" onClick={handleLoginClick}>Login</button> 
-           
-         </div>  */}
+        
         
         <div className="Overlaycontainer">
             <div className="Overlay">
@@ -240,6 +234,8 @@ export default function Login() {
         </div>
     </div>
 </div>
+    
+
     
     </div>
   )

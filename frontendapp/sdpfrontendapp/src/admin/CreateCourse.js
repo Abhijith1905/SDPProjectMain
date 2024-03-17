@@ -43,7 +43,7 @@ export default function CreateCourse() {
   
   return (
     <div className="registration-container">
-      <h2>Course Registration</h2>
+      <h2>Course Creation</h2>
       {message ? <h4>{message}</h4> : <h4>{error}</h4>}
       <div className="inner-container">
       <form onSubmit={handleSubmit}>

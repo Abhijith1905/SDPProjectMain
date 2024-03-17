@@ -69,7 +69,7 @@ export default function ViewStudents() {
     ))
   ) : (
     <tr>
-      <td colSpan="7">Data Not Found</td>
+      <td colSpan="10">Data Not Found</td>
     </tr>
   )}
 </tbody>
