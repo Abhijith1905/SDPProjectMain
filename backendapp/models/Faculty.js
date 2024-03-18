@@ -32,7 +32,8 @@ const facultyschema = new mongoose.Schema({
     },
     password: {
       type: String,
-      required: true
+      required: true,
+      default:"klef1234"
     },
     contact: {
         type: String,

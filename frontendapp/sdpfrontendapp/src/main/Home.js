@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
+import * as React from "react";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import MobileStepper from "@mui/material/MobileStepper";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import SwipeableViews from "react-swipeable-views";
+import { autoPlay } from "react-swipeable-views-utils";
 
 export default function Home() {
   const theme = useTheme();
@@ -16,27 +16,22 @@ export default function Home() {
 
   const images = [
     {
-      label: 'Acadamex',
-      imgPath:
-        'https://source.unsplash.com/featured/?education',
+      label: "Acadamex",
+      imgPath: "https://source.unsplash.com/featured/?education",
     },
     {
-      label: 'Acadamex',
-      imgPath:
-      'https://source.unsplash.com/featured/?books',
+      label: "Acadamex",
+      imgPath: "https://source.unsplash.com/featured/?books",
     },
     {
-      label: 'Acadamex',
-      imgPath:
-      'https://source.unsplash.com/featured/?blackboard',
+      label: "Acadamex",
+      imgPath: "https://source.unsplash.com/featured/?blackboard",
     },
     {
-      label: 'Acadamex',
-      imgPath:
-      'https://source.unsplash.com/featured/?library',
+      label: "Acadamex",
+      imgPath: "https://source.unsplash.com/featured/?library",
     },
   ];
-  
 
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
@@ -55,30 +50,39 @@ export default function Home() {
 
   return (
     <div>
-      
-      <h3 align="center">AcademeX</h3>
-      <p>At AcademeX, we understand the importance of seamless course management. That's why we've crafted a user-friendly environment packed with powerful features to streamline every aspect of your academic experience. From course registration to accessing resources, communicating with peers, and tracking your progress, we've got you covered every step of the way.
-
-        Our team is dedicated to providing you with the best possible experience, prioritizing security, accessibility, and innovation. Whether you're accessing the platform from your computer, tablet, or smartphone, you can trust that your data is safe and your experience is optimized for your device.</p>
-       
+      <h3 align="center">Student Course Management System</h3>
+      <p>
+        At AcademeX, we understand the importance of seamless course management.
+        That's why we've crafted a user-friendly environment packed with
+        powerful features to streamline every aspect of your academic
+        experience. From course registration to accessing resources,
+        communicating with peers, and tracking your progress, we've got you
+        covered every step of the way. Our team is dedicated to providing you
+        with the best possible experience, prioritizing security, accessibility,
+        and innovation. Whether you're accessing the platform from your
+        computer, tablet, or smartphone, you can trust that your data is safe
+        and your experience is optimized for your device.
+      </p>
 
       <Box sx={{ maxWidth: 1800, flexGrow: 1 }}>
         <Paper
           square
           elevation={0}
           sx={{
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
             height: 50,
             pl: 2,
-            bgcolor: 'background.default',
+            bgcolor: "background.default",
           }}
         >
-          <Typography sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>{images[activeStep].label}</Typography>
+          <Typography sx={{ fontWeight: "bold", fontStyle: "italic" }}>
+            {images[activeStep].label}
+          </Typography>
         </Paper>
 
         <AutoPlaySwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={activeStep}
           onChangeIndex={handleStepChange}
           enableMouseEvents
@@ -90,10 +94,10 @@ export default function Home() {
                   component="img"
                   sx={{
                     height: 390,
-                    display: 'block',
-                    maxWidth: '100%',
-                    overflow: 'hidden',
-                    width: '100%',
+                    display: "block",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                    width: "100%",
                   }}
                   src={step.imgPath}
                   alt={step.label}
@@ -113,7 +117,7 @@ export default function Home() {
               disabled={activeStep === maxSteps - 1}
             >
               Next
-              {theme.direction === 'rtl' ? (
+              {theme.direction === "rtl" ? (
                 <KeyboardArrowLeft />
               ) : (
                 <KeyboardArrowRight />
@@ -121,8 +125,12 @@ export default function Home() {
             </Button>
           }
           backButton={
-            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-              {theme.direction === 'rtl' ? (
+            <Button
+              size="small"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              {theme.direction === "rtl" ? (
                 <KeyboardArrowRight />
               ) : (
                 <KeyboardArrowLeft />
@@ -132,7 +140,6 @@ export default function Home() {
           }
         />
       </Box>
-      
     </div>
   );
 }

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import StudentPasswordResetForm from './StudentPasswordResetForm';
+import React, { useState } from "react";
+import axios from "axios";
+import StudentPasswordResetForm from "./StudentPasswordResetForm";
+import "../main/passwordreset.css";
 
-
-export default function StudentPasswordReset(){
-  const [formData, setFormData] = useState({ studentid: '' });
-  const [error, setError] = useState('');
-  const [resetPassword, setResetPassword] = useState(false);
+export default function StudentPasswordReset() {
+  const [formData, setFormData] = useState({ studentid: "" });
+  const [error, setError] = useState("");
+  const [flag, setFlag] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,32 +17,51 @@ export default function StudentPasswordReset(){
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:2000/checkstudentid', { studentid: formData.studentid });
+      const response = await axios.post("http://localhost:2000/checkstudentid", {
+        studentid: formData.studentid,
+      });
       if (response.data) {
-        setResetPassword(true);
-        setError('');
+        setFlag(true);
+        setMessage("");
+        setError("");
       } else {
-        setError('studentid not found');
+        setFlag(false);
+        setMessage("studentid not found");
+        setError("");
       }
     } catch (error) {
       setError(error.message);
+      setMessage("");
     }
   };
 
   return (
-    <div>
-      <h3 align="center"><u>Reset Password</u></h3>
-      {error && <h4 align="center">{error}</h4>}
-      {!resetPassword && (
+    <div className="reset-password-container">
+      {message ? (
+        <h4 align="center">{message}</h4>
+      ) : (
+        <h4 align="center">{error}</h4>
+      )}
+      <h3 align="center">
+        <u>Reset Password</u>
+      </h3>
+      {!flag ? (
         <form onSubmit={handleSubmit}>
           <div>
-            <label>studentid</label>
-            <input type="text" name="studentid" value={formData.studentid} onChange={handleChange} required />
+            <label>Enter studentid</label>
+            <input
+              type="text"
+              name="studentid"
+              value={formData.studentid}
+              onChange={handleChange}
+              required
+            />
           </div>
           <button type="submit">Reset Password</button>
         </form>
+      ) : (
+        <StudentPasswordResetForm studentid={formData.studentid} />
       )}
-      {resetPassword && <StudentPasswordResetForm studentid={formData.studentid} />}
     </div>
   );
-};
+}

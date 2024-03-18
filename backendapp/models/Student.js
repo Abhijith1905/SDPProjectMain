@@ -41,7 +41,8 @@ const studentschema = new mongoose.Schema({
     },
     password: {
       type: String,
-      required: true
+      required: true,
+      default:"klu123"
     },
     email: {
       type: String,

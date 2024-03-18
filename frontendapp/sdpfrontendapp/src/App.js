@@ -3,10 +3,10 @@
 import Login from './main/Login';
 import { BrowserRouter } from 'react-router-dom';
 import MainNavBar from './main/MainNavBar';
-// import AttendanceForm from './AttendanceForm';
+
 import ViewStudents from './admin/ViewStudents';
 import StudentRegistration from './admin/StudentRegistration';
-import AdminNavBar from './admin/AdminNavBar';
+
 import AdminHome from './admin/AdminHome';
 import FacultyRegistration from './admin/FacultyRegistration';
 function App() {

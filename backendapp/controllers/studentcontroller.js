@@ -34,13 +34,11 @@ const Student = require("../models/Student")
     const { studentid, newPassword } = request.body;
     try {
       const user = await Student.findOne({ studentid });
-      if (user) {
+    
         user.password = newPassword;
         await user.save();
         response.send('Password reset successfully');
-      } else {
-        response.send('studentid not found');
-      }
+      
     } catch (error) {
       response.status(500).send(error.message);
     }

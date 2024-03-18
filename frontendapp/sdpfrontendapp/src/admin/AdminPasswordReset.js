@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import AdminPasswordResetForm from './AdminPasswordResetForm';
+import React, { useState } from "react";
+import axios from "axios";
+import AdminPasswordResetForm from "./AdminPasswordResetForm";
+import "../main/passwordreset.css";
 
 
-export default function AdminPasswordReset(){
-  const [formData, setFormData] = useState({ username: '' });
-  const [error, setError] = useState('');
-  const [resetPassword, setResetPassword] = useState(false);
+export default function AdminPasswordReset() {
+  const [formData, setFormData] = useState({ username: "" });
+  const [error, setError] = useState("");
+  const [flag, setFlag] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,32 +18,51 @@ export default function AdminPasswordReset(){
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:2000/checkusername', { username: formData.username });
+      const response = await axios.post("http://localhost:2000/checkusername", {
+        username: formData.username,
+      });
       if (response.data) {
-        setResetPassword(true);
-        setError('');
+        setFlag(true);
+        setMessage("")
+        setError("");
       } else {
-        setError('Username not found');
+        setFlag(false);
+        setMessage("Username not found");
+        setError("");
       }
     } catch (error) {
       setError(error.message);
+      setMessage("");
     }
   };
 
   return (
-    <div>
-      <h3 align="center"><u>Reset Password</u></h3>
-      {error && <h4 align="center">{error}</h4>}
-      {!resetPassword && (
+    <div className="reset-password-container">
+      {message ? (
+        <h4 align="center">{message}</h4>
+      ) : (
+        <h4 align="center">{error}</h4>
+      )}
+      <h3 align="center">
+        <u>Reset Password</u>
+      </h3>
+      {!flag ? (
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Username</label>
-            <input type="text" name="username" value={formData.username} onChange={handleChange} required />
+            <label>Enter Username</label>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
           </div>
           <button type="submit">Reset Password</button>
         </form>
+      ) : (
+        <AdminPasswordResetForm username={formData.username} />
       )}
-      {resetPassword && <AdminPasswordResetForm username={formData.username} />}
     </div>
   );
-};
+}

@@ -22,14 +22,14 @@ import StudentProfile from "../student/StudentProfile";
 import StudentTimetable from "../student/StudentTimetable";
 import FacultyProfile from "../faculty/FacultyProfile";
 import FacultyTimetable from "../faculty/FacultyTimetable";
-import AdminProfile from './../admin/AdminProfile';
+import AdminProfile from "./../admin/AdminProfile";
 
-import AdminPasswordReset from './../admin/AdminPasswordReset';
-import AdminPasswordResetForm from './../admin/AdminPasswordResetForm';
-import FacultyPasswordReset from './../faculty/FacultyPasswordReset';
-import FacultyPasswordResetForm from './../faculty/FacultyPasswordResetForm';
-import StudentPasswordReset from './../student/StudentPasswordReset';
-import StudentPasswordResetForm from './../student/StudentPasswordResetForm';
+import AdminPasswordReset from "./../admin/AdminPasswordReset";
+import AdminPasswordResetForm from "./../admin/AdminPasswordResetForm";
+import FacultyPasswordReset from "./../faculty/FacultyPasswordReset";
+import FacultyPasswordResetForm from "./../faculty/FacultyPasswordResetForm";
+import StudentPasswordReset from "./../student/StudentPasswordReset";
+import StudentPasswordResetForm from "./../student/StudentPasswordResetForm";
 
 export default function MainNavBar() {
   return (
@@ -80,12 +80,36 @@ export default function MainNavBar() {
         <Route path="/facultyprofile" element={<FacultyProfile />}></Route>
         <Route path="/fviewtimetable" element={<FacultyTimetable />}></Route>
         <Route path="/createcourse" Component={CreateCourse} exact />
-        <Route path="/adminresetpasswordstart" Component={AdminPasswordReset} exact />
-        <Route path="/adminresetpasswordend" Component={AdminPasswordResetForm} exact />
-        <Route path="/facultyresetpasswordstart" Component={FacultyPasswordReset} exact />
-        <Route path="/facultyresetpasswordend" Component={FacultyPasswordResetForm} exact />
-        <Route path="/studentresetpasswordstart" Component={StudentPasswordReset} exact />
-        <Route path="/studentresetpasswordend" Component={StudentPasswordResetForm} exact />
+        <Route
+          path="/adminresetpasswordstart"
+          Component={AdminPasswordReset}
+          exact
+        />
+        <Route
+          path="/adminresetpasswordend"
+          Component={AdminPasswordResetForm}
+          exact
+        />
+        <Route
+          path="/facultyresetpasswordstart"
+          Component={FacultyPasswordReset}
+          exact
+        />
+        <Route
+          path="/facultyresetpasswordend"
+          Component={FacultyPasswordResetForm}
+          exact
+        />
+        <Route
+          path="/studentresetpasswordstart"
+          Component={StudentPasswordReset}
+          exact
+        />
+        <Route
+          path="/studentresetpasswordend"
+          Component={StudentPasswordResetForm}
+          exact
+        />
         <Route path="/registerfaculty" Component={FacultyRegistration} exact />
         <Route path="/registerstudent" Component={StudentRegistration} exact />
         <Route path="/viewstudent" Component={ViewStudents} exact />

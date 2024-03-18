@@ -214,13 +214,17 @@ const Courses = require("../models/Courses")
     const { username, newPassword } = request.body;
     try {
       const user = await Admin.findOne({ username });
-      if (user) {
-        user.password = newPassword;
-        await user.save();
-        response.send('Password reset successfully');
-      } else {
-        response.send('Username not found');
-      }
+      // if (user) {
+      //   user.password = newPassword;
+      //   await user.save();
+      //   response.send('Password reset successfully');  // not needed since check is already being done in above function
+      // } else {
+      //   response.send('Username not found');
+      // }
+      user.password = newPassword;
+      await user.save();
+      response.send('Password reset successfully');
+
     } catch (error) {
       response.status(500).send(error.message);
     }
